@@ -1,0 +1,52 @@
+<div class="overlay" [class.open]="cart.drawerOpen()" (click)="cart.closeDrawer()" aria-hidden="true"></div>
+
+<aside class="drawer" [class.open]="cart.drawerOpen()" role="dialog" aria-label="Your order" [attr.aria-hidden]="!cart.drawerOpen()">
+  <header class="drawer-head">
+    <div>
+      <h3>Your Order</h3>
+      <span>{{ cart.count() }} item{{ cart.count() === 1 ? '' : 's' }}</span>
+    </div>
+    <button type="button" class="icon-btn" (click)="cart.closeDrawer()" aria-label="Close order">
+      <app-icon name="x"></app-icon>
+    </button>
+  </header>
+
+  @if (cart.lines().length === 0) {
+    <div class="drawer-empty">
+      <span class="empty-icon"><app-icon name="shopping-bag"></app-icon></span>
+      <p><strong>Your cart is empty</strong><br>Add something tasty from the menu.</p>
+      <a href="#menu" class="btn btn-primary btn-sm" (click)="cart.closeDrawer()">Browse Menu</a>
+    </div>
+  } @else {
+    <ul class="lines">
+      @for (l of cart.lines(); track l.item.id) {
+        <li class="line">
+          <span class="veg-mark" title="Pure veg"></span>
+          <div class="line-info">
+            <strong>{{ l.item.name }}</strong>
+            <span>₹{{ l.item.price }} each</span>
+          </div>
+          <div class="stepper" role="group" aria-label="Quantity">
+            <button type="button" (click)="cart.removeOne(l.item.id)" aria-label="Remove one"><app-icon name="minus"></app-icon></button>
+            <span>{{ l.qty }}</span>
+            <button type="button" (click)="cart.add(l.item.id)" aria-label="Add one"><app-icon name="plus"></app-icon></button>
+          </div>
+          <b class="line-total">₹{{ l.qty * l.item.price }}</b>
+        </li>
+      }
+    </ul>
+
+    <div class="drawer-foot">
+      <label class="name-field">
+        <span>Your name <small>(optional)</small></span>
+        <input type="text" placeholder="e.g. Rahul" [value]="customerName()" (input)="onNameInput($event)" maxlength="40">
+      </label>
+      <div class="total-row"><span>Subtotal</span><b>₹{{ cart.total() }}</b></div>
+      <p class="fine">Pay at the counter or on delivery — the restaurant confirms your order on WhatsApp.</p>
+      <button type="button" class="btn btn-wa btn-block" (click)="order()">
+        <app-icon name="message-circle"></app-icon> Order via WhatsApp
+      </button>
+      <button type="button" class="link-btn" (click)="cart.clear()">Clear order</button>
+    </div>
+  }
+</aside>

@@ -1,0 +1,13 @@
+<section class="strip" aria-label="Why Tipsy Topsy">
+  <div class="container strip-grid">
+    @for (h of items; track h.title) {
+      <div class="hl-card" appReveal>
+        <span class="hl-icon"><app-icon [name]="h.icon"></app-icon></span>
+        <div>
+          <strong>{{ h.title }}</strong>
+          <p>{{ h.text }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</section>

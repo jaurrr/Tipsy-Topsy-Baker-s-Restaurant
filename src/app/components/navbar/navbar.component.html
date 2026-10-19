@@ -1,0 +1,50 @@
+<div class="topbar">
+  <div class="container topbar-inner">
+    <a class="top-item" [href]="site.phoneHref"><app-icon name="phone"></app-icon> {{ site.phoneDisplay }}</a>
+    <span class="top-item"><app-icon name="clock"></app-icon> {{ site.hoursNote }} · {{ site.hours }}</span>
+    <span class="top-item hide-sm"><app-icon name="map-pin"></app-icon> {{ site.addressShort }}</span>
+  </div>
+</div>
+
+<header class="nav" [class.scrolled]="scrolled()">
+  <div class="container nav-inner">
+    <a href="#home" class="brand" aria-label="Tipsy Topsy home">
+      <span class="brand-mark"><app-icon name="cake-slice"></app-icon></span>
+      <span class="brand-text"><strong>Tipsy Topsy</strong><small>Baker&rsquo;s &amp; Restaurant</small></span>
+    </a>
+
+    <nav class="links" aria-label="Primary">
+      @for (l of links; track l.href) {
+        <a [href]="l.href">{{ l.label }}</a>
+      }
+    </nav>
+
+    <div class="actions">
+      <button type="button" class="cart-btn" (click)="cart.openDrawer()" aria-label="Open your order">
+        <app-icon name="shopping-bag"></app-icon>
+        @if (cart.count() > 0) {
+          <span class="cart-count">{{ cart.count() }}</span>
+        }
+      </button>
+      <a class="btn btn-wa btn-sm hide-sm" [href]="cart.chatUrl()" target="_blank" rel="noopener">
+        <app-icon name="message-circle"></app-icon> Order on WhatsApp
+      </a>
+      <button type="button" class="menu-btn" (click)="toggleMobile()" aria-label="Toggle menu">
+        <app-icon [name]="mobileOpen() ? 'x' : 'menu'"></app-icon>
+      </button>
+    </div>
+  </div>
+
+  @if (mobileOpen()) {
+    <nav class="mobile-panel" aria-label="Mobile">
+      <div class="container">
+        @for (l of links; track l.href) {
+          <a [href]="l.href" (click)="closeMobile()">{{ l.label }}</a>
+        }
+        <a class="btn btn-wa" [href]="cart.chatUrl()" target="_blank" rel="noopener">
+          <app-icon name="message-circle"></app-icon> Order on WhatsApp
+        </a>
+      </div>
+    </nav>
+  }
+</header>

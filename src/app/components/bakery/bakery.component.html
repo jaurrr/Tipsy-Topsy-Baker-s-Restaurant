@@ -1,0 +1,38 @@
+<section class="bakery" id="bakery">
+  <div class="container bakery-grid">
+    <div class="bakery-copy" appReveal>
+      <span class="eyebrow light">Our Bakery</span>
+      <h2 class="section-title">Celebration cakes,<br>baked fresh in Azamgarh</h2>
+      <p class="bakery-sub">
+        Our ovens never really rest. Every cake and pastry is <strong>100% eggless</strong>,
+        baked in-house through the day — that&rsquo;s why the town calls us the best cake shop in Azamgarh.
+      </p>
+      <div class="points">
+        @for (p of points; track p.title) {
+          <div class="point">
+            <span class="point-icon"><app-icon [name]="p.icon"></app-icon></span>
+            <div><strong>{{ p.title }}</strong><span>{{ p.text }}</span></div>
+          </div>
+        }
+      </div>
+      <div class="bakery-cta">
+        <a class="btn btn-wa" [href]="enquiryUrl" target="_blank" rel="noopener">
+          <app-icon name="message-circle"></app-icon> Enquire on WhatsApp
+        </a>
+        <a class="btn btn-light" [href]="site.phoneHref"><app-icon name="phone"></app-icon> {{ site.phoneDisplay }}</a>
+      </div>
+    </div>
+
+    <div class="bakery-card" appReveal aria-hidden="true">
+      <span class="bk-icon"><app-icon name="cake-slice"></app-icon></span>
+      <strong>Today&rsquo;s counter</strong>
+      <ul>
+        <li><span>Black Forest Pastry</span><b>₹75</b></li>
+        <li><span>Pyramid Pastry</span><b>₹115</b></li>
+        <li><span>Pineapple Pastry</span><b>₹75</b></li>
+        <li><span>Cassata Pastry</span><b>₹85</b></li>
+      </ul>
+      <a href="#menu">See full bakery menu <app-icon name="arrow-right"></app-icon></a>
+    </div>
+  </div>
+</section>

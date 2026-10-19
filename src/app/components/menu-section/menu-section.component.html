@@ -1,0 +1,74 @@
+<section class="section menu-sec" id="menu">
+  <div class="container">
+    <div class="menu-head" appReveal>
+      <div>
+        <span class="eyebrow">Our Menu</span>
+        <h2 class="section-title">Made fresh, priced honestly</h2>
+        <p class="section-sub">Everything is 100% pure veg. Add dishes to your order and send it straight to us on WhatsApp.</p>
+      </div>
+      <label class="search">
+        <app-icon name="search"></app-icon>
+        <input type="search" placeholder="Search dishes…" [value]="query()" (input)="onSearch($event)" aria-label="Search dishes">
+        @if (query()) {
+          <button type="button" class="clear" (click)="clearSearch()" aria-label="Clear search"><app-icon name="x"></app-icon></button>
+        }
+      </label>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Menu categories" appReveal>
+      @for (c of cats; track c.id) {
+        <button
+          type="button" role="tab"
+          class="tab" [class.active]="activeCat() === c.id"
+          [attr.aria-selected]="activeCat() === c.id"
+          (click)="activeCat.set(c.id)">
+          <app-icon [name]="c.icon"></app-icon>
+          {{ c.label }}
+          <span class="tab-count">{{ countFor(c.id) }}</span>
+        </button>
+      }
+    </div>
+
+    @if (items().length > 0) {
+      <div class="dishes">
+        @for (d of items(); track d.id) {
+          <article class="dish card" appReveal>
+            <div class="dish-top">
+              <span class="veg-mark" title="Pure veg"></span>
+              @if (d.tag) {
+                <span class="tag {{ tagClass(d.tag) }}">{{ d.tag }}</span>
+              }
+            </div>
+            <h3>{{ d.name }}</h3>
+            <p>{{ d.desc }}</p>
+            <div class="dish-foot">
+              <span class="price">₹{{ d.price }}</span>
+              @if (cart.qty(d.id) === 0) {
+                <button type="button" class="add-btn" (click)="cart.add(d.id)">
+                  <app-icon name="plus"></app-icon> Add
+                </button>
+              } @else {
+                <div class="stepper" role="group" aria-label="Quantity">
+                  <button type="button" (click)="cart.removeOne(d.id)" aria-label="Remove one"><app-icon name="minus"></app-icon></button>
+                  <span>{{ cart.qty(d.id) }}</span>
+                  <button type="button" (click)="cart.add(d.id)" aria-label="Add one"><app-icon name="plus"></app-icon></button>
+                </div>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    } @else {
+      <div class="empty card">
+        <app-icon name="search"></app-icon>
+        <p>No dishes match “{{ query() }}”. Try another search.</p>
+        <button type="button" class="btn btn-outline btn-sm" (click)="clearSearch()">Clear search</button>
+      </div>
+    }
+
+    <p class="menu-note" appReveal>
+      <app-icon name="info"></app-icon>
+      Prices are from the restaurant&rsquo;s own online ordering menu — the final bill is confirmed with the restaurant on WhatsApp.
+    </p>
+  </div>
+</section>

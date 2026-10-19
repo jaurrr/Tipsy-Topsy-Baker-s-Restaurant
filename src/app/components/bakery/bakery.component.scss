@@ -1,0 +1,57 @@
+.bakery {
+  background:
+    radial-gradient(700px 420px at 12% 20%, rgba(233, 161, 59, 0.16), transparent 60%),
+    var(--dark);
+  color: #f7ead9;
+  overflow: hidden;
+}
+.bakery-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; padding: 84px 20px; }
+
+.eyebrow.light { color: var(--gold); }
+.eyebrow.light::before { background: var(--gold); }
+.bakery .section-title { color: #fff8ee; }
+.bakery-sub { color: #d9c3a8; font-size: 17px; max-width: 520px; margin: 0 0 30px; }
+.bakery-sub strong { color: #ffe9c9; }
+
+.points { display: flex; flex-direction: column; gap: 18px; margin-bottom: 34px; }
+.point { display: flex; gap: 16px; align-items: flex-start; }
+.point-icon {
+  width: 48px; height: 48px; border-radius: 15px; flex: none;
+  background: rgba(233, 161, 59, 0.16); color: var(--gold);
+  display: inline-flex; align-items: center; justify-content: center; font-size: 24px;
+  border: 1px solid rgba(233, 161, 59, 0.3);
+}
+.point strong { display: block; font-size: 16.5px; color: #fff3e2; margin-bottom: 3px; }
+.point span:last-child { font-size: 14.5px; color: #c8ab87; }
+
+.bakery-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.bakery-card {
+  background: rgba(255, 249, 241, 0.06);
+  border: 1px solid rgba(233, 161, 59, 0.28);
+  border-radius: 24px; padding: 34px 32px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+}
+.bk-icon {
+  width: 60px; height: 60px; border-radius: 18px; margin-bottom: 18px;
+  background: linear-gradient(135deg, var(--gold), var(--brand)); color: #2b1a0c;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 32px;
+}
+.bakery-card strong { font-family: var(--font-display); font-size: 22px; color: #fff3e2; display: block; margin-bottom: 16px; }
+.bakery-card ul { list-style: none; margin: 0 0 22px; padding: 0; }
+.bakery-card li {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 13px 0; border-bottom: 1px dashed rgba(233, 161, 59, 0.25);
+  font-size: 15.5px; color: #efdcbe;
+}
+.bakery-card li b { color: var(--gold); font-size: 16.5px; }
+.bakery-card a {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--gold); font-weight: 700; text-decoration: none; font-size: 15px;
+}
+.bakery-card a:hover { text-decoration: underline; }
+
+@media (max-width: 960px) {
+  .bakery-grid { grid-template-columns: 1fr; gap: 40px; padding: 64px 20px; }
+}

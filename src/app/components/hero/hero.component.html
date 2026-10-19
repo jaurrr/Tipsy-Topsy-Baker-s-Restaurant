@@ -1,0 +1,51 @@
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div class="hero-copy" appReveal>
+      <span class="pill"><span class="dot"></span> Open now · Closes 10:00 PM</span>
+      <h1>Tipsy Topsy <span>Baker&rsquo;s &amp; Restaurant</span></h1>
+      <p class="hi">{{ site.nameHi }}</p>
+
+      <div class="rating">
+        <span class="stars" aria-label="Rated 4.2 out of 5">★★★★<span class="dim">★</span></span>
+        <strong>{{ site.rating }}</strong>
+        <span class="muted">· {{ site.reviewCount }} Google reviews</span>
+      </div>
+
+      <p class="lede">
+        Azamgarh&rsquo;s loved pure-veg family restaurant &amp; eggless bakery — fresh cakes from our
+        own ovens, smoky Chinese, and snacks the whole town keeps coming back for.
+      </p>
+
+      <div class="cta-row">
+        <a href="#menu" class="btn btn-primary"><app-icon name="utensils"></app-icon> Explore Menu</a>
+        <a class="btn btn-wa" [href]="cart.chatUrl()" target="_blank" rel="noopener">
+          <app-icon name="message-circle"></app-icon> Order on WhatsApp
+        </a>
+      </div>
+
+      <div class="chips">
+        <span class="chip"><app-icon name="leaf"></app-icon> 100% Pure Veg</span>
+        <span class="chip"><app-icon name="cake-slice"></app-icon> Eggless Bakery</span>
+        <span class="chip"><app-icon name="banknote"></app-icon> {{ site.priceBand }}</span>
+      </div>
+    </div>
+
+    <div class="hero-art" appReveal aria-hidden="true">
+      <div class="blob"></div>
+      <div class="art-card main">
+        <span class="art-icon"><app-icon name="cake-slice"></app-icon></span>
+        <strong>In-house Eggless Bakery</strong>
+        <span>Cakes, pastries &amp; biscuits baked fresh every day</span>
+      </div>
+      <div class="art-card float-a">
+        <span class="stars">★★★★<span class="dim">★</span></span>
+        <strong>4.2 rated</strong>
+        <span>286 Google reviews</span>
+      </div>
+      <div class="art-card float-b">
+        <span class="veg-mark"></span>
+        <span class="fb-text"><strong>Pure Veg</strong><span>Kitchen &amp; bakery</span></span>
+      </div>
+    </div>
+  </div>
+</section>

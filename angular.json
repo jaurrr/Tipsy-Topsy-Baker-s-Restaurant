@@ -1,0 +1,73 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "newProjectRoot": "projects",
+  "projects": {
+    "tipsy-topsy-demo": {
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "configurations": {
+            "development": {
+              "extractLicenses": false,
+              "optimization": false,
+              "sourceMap": true
+            },
+            "production": {
+              "budgets": [
+                {
+                  "maximumError": "1MB",
+                  "maximumWarning": "600kB",
+                  "type": "initial"
+                },
+                {
+                  "maximumError": "30kB",
+                  "maximumWarning": "15kB",
+                  "type": "anyComponentStyle"
+                }
+              ],
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "assets": [
+              "src/favicon.svg"
+            ],
+            "browser": "src/main.ts",
+            "index": "src/index.html",
+            "outputPath": "dist/tipsy-topsy-demo",
+            "polyfills": [
+              "zone.js"
+            ],
+            "scripts": [],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "tsConfig": "tsconfig.app.json"
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "development": {
+              "buildTarget": "tipsy-topsy-demo:build:development"
+            },
+            "production": {
+              "buildTarget": "tipsy-topsy-demo:build:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      },
+      "prefix": "app",
+      "projectType": "application",
+      "root": "",
+      "schematics": {},
+      "sourceRoot": "src"
+    }
+  },
+  "version": 1,
+  "cli": {
+    "analytics": false
+  }
+}

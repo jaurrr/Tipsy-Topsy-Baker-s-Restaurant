@@ -1,0 +1,107 @@
+/* Tipsy Topsy — design system */
+
+:root {
+  --bg: #fff9f1;
+  --bg-soft: #fdeedd;
+  --card: #ffffff;
+  --ink: #2b1d12;
+  --ink-soft: #4a3a2c;
+  --muted: #8a7565;
+  --line: #f0e0cb;
+  --brand: #c14a09;
+  --brand-dark: #93350a;
+  --maroon: #7c2d12;
+  --gold: #e9a13b;
+  --veg: #1e7a3c;
+  --wa: #1fa855;
+  --wa-dark: #157a3d;
+  --dark: #221409;
+  --radius: 18px;
+  --shadow: 0 10px 30px rgba(124, 45, 18, 0.08);
+  --shadow-lg: 0 24px 60px rgba(124, 45, 18, 0.14);
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; margin: 0; }
+
+img { max-width: 100%; }
+a { color: inherit; }
+
+.container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 76px 0; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 14px;
+}
+.eyebrow::before { content: ''; width: 26px; height: 2px; background: var(--brand); border-radius: 2px; }
+
+.section-title { font-size: clamp(30px, 4.5vw, 44px); font-weight: 600; margin-bottom: 12px; }
+.section-sub { color: var(--muted); max-width: 640px; margin: 0 0 36px; font-size: 17px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 26px; border-radius: 999px; border: none; cursor: pointer;
+  font-family: var(--font-body); font-size: 15.5px; font-weight: 700;
+  text-decoration: none; transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: linear-gradient(135deg, var(--brand), var(--maroon)); color: #fff; box-shadow: 0 12px 26px rgba(193, 74, 9, 0.32); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(193, 74, 9, 0.4); }
+.btn-wa { background: var(--wa); color: #fff; box-shadow: 0 12px 26px rgba(31, 168, 85, 0.32); }
+.btn-wa:hover { transform: translateY(-2px); background: var(--wa-dark); }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.btn-outline:hover { border-color: var(--brand); color: var(--brand); }
+.btn-light { background: #fff; color: var(--ink); }
+.btn-sm { padding: 10px 20px; font-size: 14px; }
+
+/* Veg mark (Indian veg symbol) */
+.veg-mark {
+  width: 16px; height: 16px; border: 1.5px solid var(--veg); border-radius: 4px;
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+}
+.veg-mark::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--veg); }
+
+/* Cards */
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Star rating */
+.stars { display: inline-flex; align-items: center; gap: 2px; color: var(--gold); font-size: 15px; }
+.stars .dim { color: #e4d3b8; }
+
+::selection { background: var(--gold); color: var(--ink); }
+
+@media (max-width: 720px) {
+  .section { padding: 56px 0; }
+  .btn { padding: 13px 22px; font-size: 15px; }
+}

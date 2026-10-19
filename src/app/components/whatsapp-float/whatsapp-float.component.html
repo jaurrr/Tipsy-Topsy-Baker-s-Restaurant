@@ -1,0 +1,10 @@
+@if (cart.count() > 0 && !cart.drawerOpen()) {
+  <button type="button" class="view-cart" (click)="cart.openDrawer()">
+    <app-icon name="shopping-bag"></app-icon>
+    View order · {{ cart.count() }} item{{ cart.count() === 1 ? '' : 's' }} · ₹{{ cart.total() }}
+  </button>
+}
+
+<a class="wa-float" [href]="cart.chatUrl()" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <app-icon name="message-circle"></app-icon>
+</a>

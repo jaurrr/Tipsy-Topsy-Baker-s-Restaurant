@@ -1,0 +1,50 @@
+<section class="section visit-sec" id="visit">
+  <div class="container">
+    <div appReveal>
+      <span class="eyebrow">Visit Us</span>
+      <h2 class="section-title">Come, sit with family</h2>
+      <p class="section-sub">In the heart of Brahmasthan — easy to reach, easy to love. Walk in or order ahead on WhatsApp.</p>
+    </div>
+
+    <div class="visit-grid">
+      <div class="info card" appReveal>
+        <div class="info-row">
+          <span class="info-icon"><app-icon name="map-pin"></app-icon></span>
+          <div><strong>Address</strong><p>{{ site.address }}</p></div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon"><app-icon name="phone"></app-icon></span>
+          <div><strong>Call us</strong><p><a [href]="site.phoneHref">{{ site.phoneDisplay }}</a> · <a [href]="site.phoneHref">{{ site.phoneIntl }}</a></p></div>
+        </div>
+        <div class="info-row">
+          <span class="info-icon"><app-icon name="clock"></app-icon></span>
+          <div class="hours">
+            <strong>Opening hours</strong>
+            <ul>
+              @for (d of days; track d) {
+                <li><span>{{ d }}</span><b>{{ site.hours }}</b></li>
+              }
+            </ul>
+          </div>
+        </div>
+        <div class="info-cta">
+          <a class="btn btn-primary btn-sm" [href]="site.mapsSearchUrl" target="_blank" rel="noopener">
+            <app-icon name="navigation"></app-icon> Get Directions
+          </a>
+          <a class="btn btn-wa btn-sm" [href]="cart.chatUrl()" target="_blank" rel="noopener">
+            <app-icon name="message-circle"></app-icon> WhatsApp Us
+          </a>
+        </div>
+      </div>
+
+      <div class="map-wrap card" appReveal>
+        <iframe
+          title="Tipsy Topsy location map"
+          [src]="mapUrl"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>

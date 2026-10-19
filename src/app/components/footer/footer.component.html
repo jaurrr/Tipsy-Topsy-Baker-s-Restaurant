@@ -1,0 +1,41 @@
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="f-brand">
+      <span class="brand-mark"><app-icon name="cake-slice"></app-icon></span>
+      <strong>Tipsy Topsy</strong>
+      <small>Baker&rsquo;s &amp; Restaurant</small>
+      <p>{{ site.tagline }}, Brahmasthan, Azamgarh. Fresh from our ovens, served with love.</p>
+      <span class="stars" aria-label="Rated 4.2 out of 5">★★★★<span class="dim">★</span></span>
+      <span class="f-rating">{{ site.rating }} · {{ site.reviewCount }} Google reviews</span>
+    </div>
+
+    <nav class="f-col" aria-label="Footer">
+      <h4>Explore</h4>
+      @for (l of links; track l.href) {
+        <a [href]="l.href">{{ l.label }}</a>
+      }
+    </nav>
+
+    <div class="f-col">
+      <h4>Contact</h4>
+      <a [href]="site.phoneHref"><app-icon name="phone"></app-icon> {{ site.phoneDisplay }}</a>
+      <span><app-icon name="map-pin"></app-icon> {{ site.addressShort }}</span>
+      <span><app-icon name="clock"></app-icon> {{ site.hoursNote }} · {{ site.hours }}</span>
+    </div>
+
+    <div class="f-col">
+      <h4>Good to know</h4>
+      <span><app-icon name="leaf"></app-icon> 100% pure veg kitchen</span>
+      <span><app-icon name="cake-slice"></app-icon> All bakery items eggless</span>
+      <span><app-icon name="banknote"></app-icon> {{ site.priceBand }}</span>
+      <span><app-icon name="wifi"></app-icon> Free Wi-Fi · family seating</span>
+    </div>
+  </div>
+
+  <div class="f-bottom">
+    <div class="container f-bottom-inner">
+      <span>© {{ year }} {{ site.name }}, Azamgarh. All rights reserved.</span>
+      <span class="demo-note">Demo preview — menu &amp; prices to be confirmed with the restaurant.</span>
+    </div>
+  </div>
+</footer>
